@@ -1,5 +1,4 @@
 pipeline {
-
     agent any
 
     stages {
@@ -9,10 +8,14 @@ pipeline {
             }
         }
         stage('Build Image') {
-            sh "docker build -t hodor78/selenium ."
+            steps {
+                sh "docker build -t hodor78/selenium ."
+            }
         }
         stage('Push Image') {
-            sh "docker push hodor78/selenium"
+            steps {
+                sh "docker push hodor78/selenium"
+            }
         }
     }
 }
